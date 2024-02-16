@@ -26,6 +26,7 @@ let Game = (function() {
         if (checkForWinner(symbol)) {
             alert('We have a winner!');
             clearGameboard();
+            reset();
             }
         turn ++;
     }
@@ -42,6 +43,11 @@ let Game = (function() {
         boxes.forEach(box => {
             box.textContent = '';
         }) 
+    }
+
+    function reset() {
+        clearGameboard();
+        location.reload();
     }
 
 })()
