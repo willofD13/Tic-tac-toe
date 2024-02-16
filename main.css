@@ -16,4 +16,5 @@ body {
 .box {
     flex-basis:28%;
     border: 1px black dashed;
+    text-align: center;
 }
