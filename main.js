@@ -17,24 +17,24 @@ let Game = (function() {
     };
 
     boxes.forEach(box => {
-        box.addEventListener('click', placeSymbol, { once: true })
+        box.addEventListener('click', placeSymbol)
     }) 
 
     function placeSymbol(e) {
         let symbol = turn % 2 === 0 ? x : o
         e.target.innerHTML = symbol;
-        checkForWinner();
+        if (checkForWinner(symbol)) {
+            alert('We have a winner!');
+            clearGameboard();
+            }
         turn ++;
     }
 
-    function checkForWinner() {
-        wins.forEach( win => {
-            if (boxes[win[0]].textContent === boxes[win[1]].textContent 
-                && boxes[win[1]].textContent === boxes[win[2]].textContent 
-                && boxes[win[0]].textContent !== '') {
-                alert('We have a winner!');
-                clearGameboard();
-            }
+    function checkForWinner(symbol) {
+        return wins.some( win => {
+            return win.every(index => {
+                return boxes[index].textContent === symbol
+            })
         })
     }
 
@@ -43,4 +43,5 @@ let Game = (function() {
             box.textContent = '';
         }) 
     }
+
 })()
