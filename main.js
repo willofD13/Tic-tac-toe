@@ -33,7 +33,14 @@ let Game = (function() {
                 && document.getElementById(`${win[1]}`).textContent === document.getElementById(`${win[2]}`).textContent 
                 && document.getElementById(`${win[0]}`).textContent !== '') {
                 alert('We have a winner!');
+                clearGameboard();
             }
         })
+    }
+
+    function clearGameboard() {
+        boxes.forEach(box => {
+            box.textContent = '';
+        }) 
     }
 })()
