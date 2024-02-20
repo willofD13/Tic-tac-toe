@@ -59,6 +59,10 @@ const Game = (function() {
         location.reload();
     }
 
-    addEvent();
+    return {
+        addEvent
+    }
 
 })()
+
+Game.addEvent();
